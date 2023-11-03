@@ -30,10 +30,7 @@ export default function QuestDetail({ useLoader }) {
             }}>
                 {[data.optionOne, data.optionTwo].map(opt => (
                     <Card bordered={true}>
-                        <Card.Grid style={{
-                            width: '100%',
-                            textAlign: 'center',
-                        }} hoverable={false}>{opt.text}</Card.Grid>
+                        <p style={{ width: '100%', textAlign: 'center', padding: '0 0.5rem' }}>{opt.text}</p>
                         <Card.Grid style={{
                             width: '100%',
                             textAlign: 'center',
