@@ -1,5 +1,5 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Outlet } from "@tanstack/react-router";
+import { Outlet, useNavigate } from "@tanstack/react-router";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
 import Title from "antd/es/typography/Title";
 import { useState } from "react";
@@ -29,11 +29,22 @@ const avatarMenuItems: MenuProps['items'] = [
 ];
 
 export default function MainLayout() {
-
+    const navigator = useNavigate()
     const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
+        switch (e.key) {
+            case 'home':
+                navigator({ to: '/' })
+                break
+            case 'leaderboard':
+                navigator({ to: '/leaderboard' })
+                break
+            case 'new':
+                navigator({ to: '/quest/new' })
+                break
+        }
     };
     return (
         <>
