@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from "@tanstack/react-router";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
 import Title from "antd/es/typography/Title";
 import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const items: MenuProps['items'] = [
     {
@@ -23,26 +24,26 @@ const avatarMenuItems: MenuProps['items'] = [
     {
         key: '1',
         label: (
-            <a href="/login">Logout</a>
+            <a href="/login" onClick={() => useAuth().logout()}>Logout</a>
         ),
     },
 ];
 
 export default function MainLayout() {
-    const navigator = useNavigate()
+    const navigate = useNavigate()
     const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
         setCurrent(e.key);
         switch (e.key) {
             case 'home':
-                navigator({ to: '/' })
+                navigate({ to: '/' })
                 break
             case 'leaderboard':
-                navigator({ to: '/leaderboard' })
+                navigate({ to: '/leaderboard' })
                 break
             case 'new':
-                navigator({ to: '/quest/new' })
+                navigate({ to: '/quest/new' })
                 break
         }
     };

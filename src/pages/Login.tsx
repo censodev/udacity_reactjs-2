@@ -1,8 +1,17 @@
 import { Button, Form, Input } from 'antd'
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from '@tanstack/react-router';
 export default function Login() {
-    const onFinish = (values: { username: string, password: string }) => {
-        console.log('Received values of form: ', values);
+    const auth = useAuth()
+    const navigate = useNavigate()
+    async function onFinish({ username, password }: { username: string, password: string }): Promise<void> {
+        const rs = await auth.login(username, password)
+        if (rs) {
+            navigate({ to: '/' })
+            return
+        }
+        alert('Username or password is incorrect!')
     }
     return (
         <div style={{

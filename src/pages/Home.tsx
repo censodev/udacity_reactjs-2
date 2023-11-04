@@ -1,5 +1,5 @@
-import { QuestModel } from "../components/Quest";
 import QuestGroup from "../components/QuestGroup";
+import { QuestModel } from "../types/models";
 
 export default function Home() {
     const questions: QuestModel[] = [
