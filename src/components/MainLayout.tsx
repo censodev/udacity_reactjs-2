@@ -2,7 +2,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "@tanstack/react-router";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
 import Title from "antd/es/typography/Title";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
 const items: MenuProps['items'] = [
@@ -30,10 +30,15 @@ const avatarMenuItems: MenuProps['items'] = [
 ];
 
 export default function MainLayout() {
+    const auth = useAuth()
+    useEffect(() => {
+        if (!auth.isAuthenticated()) {
+            window.location.href = '/login'
+        }
+    })
     const navigate = useNavigate()
     const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
-        console.log('click ', e);
         setCurrent(e.key);
         switch (e.key) {
             case 'home':
