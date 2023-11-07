@@ -11,8 +11,12 @@ export const createQuestion = createAsyncThunk("quest/createQuestion", async (qu
     return await (_saveQuestion(quest) as Promise<QuestModel>)
 })
 
-const initialState: { questions: QuestModel[] } = {
+const initialState: {
+    questions: QuestModel[],
+    fetchPending: boolean,
+} = {
     questions: [],
+    fetchPending: false,
 }
 
 const questSlice = createSlice({
@@ -36,8 +40,12 @@ const questSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(fetchQuestions.pending, (state) => {
+                state.fetchPending = true;
+            })
             .addCase(fetchQuestions.fulfilled, (state, action) => {
                 state.questions = action.payload;
+                state.fetchPending = false;
             })
             .addCase(createQuestion.fulfilled, (state, action) => {
                 console.log(action.payload);
