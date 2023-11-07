@@ -1,36 +1,27 @@
 import { Card } from "antd"
 import Title from "antd/es/typography/Title"
+import { useSelector } from "react-redux"
+import { RootState } from "../store"
 
 export default function QuestDetail({ useLoader }) {
     const id = useLoader() as string
-    const data = {
-        id: '8xf0y6ziyjabvozdd253nd',
-        author: 'sarahedo',
-        timestamp: new Date(1467166872634),
-        optionOne: {
-            votes: ['sarahedo'],
-            text: 'Build our new application with Javascript',
-        },
-        optionTwo: {
-            votes: [],
-            text: 'Build our new application with Typescript'
-        }
-    }
+    const questions = useSelector((state: RootState) => state.quest.questions)
+    const data = questions.find(q => q.id === id)
     return (
         <div style={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
         }}>
-            <Title level={3}>Poll by {data.author}</Title>
+            <Title level={3}>Poll by {data?.author}</Title>
             <p>Would you rather</p>
             <div style={{
                 display: 'flex',
                 gap: '1.5rem',
             }}>
-                {[data.optionOne, data.optionTwo].map(opt => (
-                    <Card bordered={true}>
-                        <p style={{ width: '100%', textAlign: 'center', padding: '0 0.5rem' }}>{opt.text}</p>
+                {[data?.optionOne, data?.optionTwo].map(opt => (
+                    <Card bordered={true} key={opt?.text} style={{ flex: '1 0' }}>
+                        <p style={{ width: '100%', textAlign: 'center', padding: '0 0.5rem' }}>{opt?.text}</p>
                         <Card.Grid style={{
                             width: '100%',
                             textAlign: 'center',

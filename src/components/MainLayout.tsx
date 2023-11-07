@@ -66,7 +66,7 @@ export default function MainLayout() {
                         alignItems: 'center',
                         borderBottom: '1px solid rgba(5, 5, 5, 0.06)',
                     }}>
-                        <Title level={5} style={{ margin: '0 0.5rem 0 0' }}>Umi</Title>
+                        <Title level={5} style={{ margin: '0 0.5rem 0 0' }}>{auth.user()?.name}</Title>
                         <Avatar icon={<UserOutlined />}></Avatar>
                     </div>
                 </Dropdown>

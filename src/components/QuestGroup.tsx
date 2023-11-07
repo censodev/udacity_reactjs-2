@@ -6,8 +6,8 @@ import { QuestModel } from "../types/models";
 export default function QuestGroup({ name, questions, style }: { name: string, questions: QuestModel[], style?: CSSProperties }) {
     return (
         <Card title={name} bordered={true} style={style}>
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
-                {questions.map(q => <Quest data={q} style={{ flexBasis: '25%' }}></Quest>)}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '1.5rem' }}>
+                {questions.map(q => <Quest key={q.id} data={q}></Quest>)}
             </div>
         </Card>
     )

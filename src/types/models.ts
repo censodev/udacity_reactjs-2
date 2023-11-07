@@ -19,4 +19,5 @@ export type QuestModel = {
         votes: string[]
         text: string
     },
+    voted: boolean
 }

@@ -20,6 +20,7 @@ export default function useAuth() {
         logout: () => {
             dispatch(logout())
         },
-        isAuthenticated: () => !!user
+        isAuthenticated: () => !!user,
+        user: () => user,
     }
 }
