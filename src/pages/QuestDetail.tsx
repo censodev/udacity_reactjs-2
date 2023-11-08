@@ -3,8 +3,9 @@ import Title from "antd/es/typography/Title"
 import { useSelector } from "react-redux"
 import { RootState } from "../store"
 
-export default function QuestDetail({ useLoader }) {
-    const id = useLoader() as string
+export default function QuestDetail() {
+    const pathSegments = window.location.pathname.split('/')
+    const id = pathSegments[pathSegments.length - 1]
     const questions = useSelector((state: RootState) => state.quest.questions)
     const data = questions.find(q => q.id === id)
     return (

@@ -39,9 +39,6 @@ const questDetailRoute = new Route({
     getParentRoute: () => layoutRoute,
     path: '/quest/$id',
     component: QuestDetail,
-    loader: ({ params: { id } }) => {
-        return id
-    },
 })
 const routeTree = rootRoute.addChildren([
     loginRoute,
