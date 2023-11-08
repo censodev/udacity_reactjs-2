@@ -8,15 +8,15 @@ import useAuth from "../hooks/useAuth";
 const items: MenuProps['items'] = [
     {
         label: 'Home',
-        key: 'home',
+        key: '/',
     },
     {
         label: 'Leaderboard',
-        key: 'leaderboard',
+        key: '/leaderboard',
     },
     {
         label: 'New',
-        key: 'new',
+        key: '/quest/new',
     },
 ];
 
@@ -35,19 +35,19 @@ export default function MainLayout() {
         if (!auth.isAuthenticated()) {
             window.location.href = '/login'
         }
-    })
+        setCurrent(window.location.pathname)
+    }, [auth])
     const navigate = useNavigate()
     const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
-        setCurrent(e.key);
         switch (e.key) {
-            case 'home':
+            case '/':
                 navigate({ to: '/' })
                 break
-            case 'leaderboard':
+            case '/leaderboard':
                 navigate({ to: '/leaderboard' })
                 break
-            case 'new':
+            case '/quest/new':
                 navigate({ to: '/quest/new' })
                 break
         }
