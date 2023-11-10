@@ -1,7 +1,9 @@
-let users = {
+import { QuestModel, UserModel } from "./src/types/models"
+
+let users: { [key: string]: UserModel } = {
   sarahedo: {
     id: 'sarahedo',
-    password:'password123',
+    password: 'password123',
     name: 'Sarah Edo',
     avatarURL: null,
     answers: {
@@ -14,7 +16,7 @@ let users = {
   },
   tylermcginnis: {
     id: 'tylermcginnis',
-    password:'abc321',
+    password: 'abc321',
     name: 'Tyler McGinnis',
     avatarURL: null,
     answers: {
@@ -25,7 +27,7 @@ let users = {
   },
   mtsamis: {
     id: 'mtsamis',
-    password:'xyz123',
+    password: 'xyz123',
     name: 'Mike Tsamis',
     avatarURL: null,
     answers: {
@@ -37,7 +39,7 @@ let users = {
   },
   zoshikanlu: {
     id: 'zoshikanlu',
-    password:'pass246',
+    password: 'pass246',
     name: 'Zenobia Oshikanlu',
     avatarURL: null,
     answers: {
@@ -47,11 +49,11 @@ let users = {
   }
 }
 
-let questions = {
+let questions: { [key: string]: QuestModel } = {
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
-    timestamp: 1467166872634,
+    timestamp: new Date(1467166872634),
     optionOne: {
       votes: ['sarahedo'],
       text: 'Build our new application with Javascript',
@@ -64,7 +66,7 @@ let questions = {
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'mtsamis',
-    timestamp: 1468479767190,
+    timestamp: new Date(1468479767190),
     optionOne: {
       votes: [],
       text: 'hire more frontend developers',
@@ -77,7 +79,7 @@ let questions = {
   "am8ehyc8byjqgar0jgpub9": {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
-    timestamp: 1488579767190,
+    timestamp: new Date(1488579767190),
     optionOne: {
       votes: [],
       text: 'conduct a release retrospective 1 week after a release',
@@ -90,7 +92,7 @@ let questions = {
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
-    timestamp: 1482579767190,
+    timestamp: new Date(1482579767190),
     optionOne: {
       votes: [],
       text: 'have code reviews conducted by peers',
@@ -103,7 +105,7 @@ let questions = {
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
-    timestamp: 1489579767190,
+    timestamp: new Date(1489579767190),
     optionOne: {
       votes: ['tylermcginnis'],
       text: 'take a course on ReactJS',
@@ -116,7 +118,7 @@ let questions = {
   "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'mtsamis',
-    timestamp: 1493579767190,
+    timestamp: new Date(1493579767190),
     optionOne: {
       votes: ['mtsamis', 'zoshikanlu'],
       text: 'deploy to production once every two weeks',
@@ -128,26 +130,26 @@ let questions = {
   },
 }
 
-function generateUID () {
+function generateUID() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
 }
 
-export function _getUsers () {
+export function _getUsers() {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({...users}), 1000)
+    setTimeout(() => resolve({ ...users }), 1000)
   })
 }
 
-export function _getQuestions () {
+export function _getQuestions(): Promise<{ [key: string]: QuestModel }> {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({...questions}), 1000)
+    setTimeout(() => resolve({ ...questions }), 1000)
   })
 }
 
-function formatQuestion ({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOneText, optionTwoText, author }: { optionOneText: string, optionTwoText: string, author: string }): QuestModel {
   return {
     id: generateUID(),
-    timestamp: Date.now(),
+    timestamp: new Date(),
     author,
     optionOne: {
       votes: [],
@@ -160,9 +162,14 @@ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   }
 }
 
-export function _saveQuestion (question) {
+export function _saveQuestion(question: { optionOneText: string, optionTwoText: string, author: string }): Promise<QuestModel> {
   return new Promise((resolve, reject) => {
-    if (!question.optionOneText || !question.optionTwoText || !question.author) {
+    if (!question.optionOneText
+      || !question.optionTwoText
+      || !question.author
+      || 0 === question.optionOneText.length
+      || 0 === question.optionTwoText.length
+      || 0 === question.author.length) {
       reject("Please provide optionOneText, optionTwoText, and author");
     }
 
@@ -186,7 +193,7 @@ export function _saveQuestion (question) {
   })
 }
 
-export function _saveQuestionAnswer ({ authedUser, qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qid, answer }: { authedUser: string, qid: string, answer: 'optionOne' | 'optionTwo' }) {
   return new Promise((resolve, reject) => {
     if (!authedUser || !qid || !answer) {
       reject("Please provide authedUser, qid, and answer");

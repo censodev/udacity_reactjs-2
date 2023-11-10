@@ -3,12 +3,12 @@ import { QuestModel, UserModel } from "../types/models";
 import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from "../../_DATA";
 
 export const fetchQuestions = createAsyncThunk("quest/fetchQuestions", async () => {
-    const response = await (_getQuestions() as Promise<{ [key: string]: QuestModel }>);
+    const response = await _getQuestions();
     return Object.values(response);
 });
 
 export const createQuestion = createAsyncThunk("quest/createQuestion", async (quest: { optionOneText: string, optionTwoText: string, author: string }) => {
-    return await (_saveQuestion(quest) as Promise<QuestModel>)
+    return await _saveQuestion(quest)
 })
 
 export const saveQuestionAnswer = createAsyncThunk("quest/saveQuestionAnswer", async (qa: {
@@ -16,7 +16,7 @@ export const saveQuestionAnswer = createAsyncThunk("quest/saveQuestionAnswer", a
     qid: string,
     answer: number,
 }) => {
-    await (_saveQuestionAnswer({ ...qa, answer: qa.answer === 1 ? 'optionOne' : 'optionTwo' }) as Promise<void>)
+    await _saveQuestionAnswer({ ...qa, answer: qa.answer === 1 ? 'optionOne' : 'optionTwo' })
     return qa
 })
 
@@ -53,7 +53,7 @@ const questSlice = createSlice({
             })
             .addCase(fetchQuestions.fulfilled, (state, action) => {
                 state.questions = action.payload
-                    .sort((q1, q2) => q2.timestamp - q1.timestamp);
+                    .sort((q1, q2) => q2.timestamp.getTime() - q1.timestamp.getTime());
                 state.fetchPending = false;
             })
             .addCase(createQuestion.fulfilled, (state, action) => {

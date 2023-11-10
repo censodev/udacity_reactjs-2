@@ -14,10 +14,10 @@ export type QuestModel = {
     optionOne: {
         votes: string[]
         text: string
-    },
+    }
     optionTwo: {
         votes: string[]
         text: string
-    },
-    voted: boolean
+    }
+    voted?: boolean
 }
