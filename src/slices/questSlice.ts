@@ -17,6 +17,7 @@ export const saveQuestionAnswer = createAsyncThunk("quest/saveQuestionAnswer", a
     answer: number,
 }) => {
     await (_saveQuestionAnswer({ ...qa, answer: qa.answer === 1 ? 'optionOne' : 'optionTwo' }) as Promise<void>)
+    return qa
 })
 
 const initialState: {
@@ -26,6 +27,7 @@ const initialState: {
     questions: [],
     fetchPending: false,
 }
+
 
 const questSlice = createSlice({
     name: 'quest',
@@ -48,6 +50,19 @@ const questSlice = createSlice({
             .addCase(createQuestion.fulfilled, (state, action) => {
                 console.log(action.payload);
                 state.questions = [...state.questions, action.payload];
+            })
+            .addCase(saveQuestionAnswer.fulfilled, (state, action) => {
+                console.log(action.payload);
+                state.questions.forEach(q => {
+                    if (q.id === action.payload.qid) {
+                        if (1 === action.payload.answer) {
+                            q.optionOne.votes.push(action.payload.authedUser)
+                        }
+                        if (2 === action.payload.answer) {
+                            q.optionTwo.votes.push(action.payload.authedUser)
+                        }
+                    }
+                });
             })
     },
 })
