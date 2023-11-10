@@ -4,9 +4,12 @@ import { RootState } from "../store";
 import { useEffect } from "react";
 import { fetchQuestions } from "../slices/questSlice";
 import { Spin } from "antd";
+import useAuth from "../hooks/useAuth";
 
 export default function Home() {
     const dispatch = useDispatch();
+    const auth = useAuth()
+    const uid = auth.user()?.id ?? ''
     const questions = useSelector((state: RootState) => state.quest.questions)
     const fetchPending = useSelector((state: RootState) => state.quest.fetchPending);
     useEffect(() => {
@@ -17,8 +20,8 @@ export default function Home() {
     }
     return (
         <div>
-            <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="New Questions" questions={questions.filter(q => !q.voted)}></QuestGroup>
-            <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="Done" questions={questions.filter(q => q.voted)}></QuestGroup>
+            <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="New Questions" questions={questions.filter(q => !q.optionOne.votes.includes(uid) && !q.optionTwo.votes.includes(uid))}></QuestGroup>
+            <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="Done" questions={questions.filter(q => q.optionOne.votes.includes(uid) || q.optionTwo.votes.includes(uid))}></QuestGroup>
         </div>
     )
 }
