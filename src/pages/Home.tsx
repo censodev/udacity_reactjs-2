@@ -15,13 +15,10 @@ export default function Home() {
     useEffect(() => {
         dispatch(fetchQuestions());
     }, [dispatch]);
-    if (fetchPending) {
-        return <Spin size="large" style={{ position: 'fixed', left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }} />;
-    }
     return (
-        <div>
+        <Spin spinning={fetchPending}>
             <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="New Questions" questions={questions.filter(q => !q.optionOne.votes.includes(uid) && !q.optionTwo.votes.includes(uid))}></QuestGroup>
             <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="Done" questions={questions.filter(q => q.optionOne.votes.includes(uid) || q.optionTwo.votes.includes(uid))}></QuestGroup>
-        </div>
+        </Spin>
     )
 }

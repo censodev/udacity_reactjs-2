@@ -1,6 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { QuestModel } from "../types/models";
-import { _getQuestions, _saveQuestion, _saveQuestionAnswer } from "../../_DATA";
+import { QuestModel, UserModel } from "../types/models";
+import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from "../../_DATA";
 
 export const fetchQuestions = createAsyncThunk("quest/fetchQuestions", async () => {
     const response = await (_getQuestions() as Promise<{ [key: string]: QuestModel }>);
@@ -20,12 +20,21 @@ export const saveQuestionAnswer = createAsyncThunk("quest/saveQuestionAnswer", a
     return qa
 })
 
+export const fetchUsers = createAsyncThunk("quest/fetchUsers", async () => {
+    const response = await (_getUsers() as Promise<{ [key: string]: UserModel }>);
+    return Object.values(response);
+});
+
 const initialState: {
     questions: QuestModel[],
     fetchPending: boolean,
+    users: UserModel[],
+    fetchUserPending: boolean,
 } = {
     questions: [],
     fetchPending: false,
+    users: [],
+    fetchUserPending: false,
 }
 
 
@@ -50,6 +59,11 @@ const questSlice = createSlice({
             .addCase(createQuestion.fulfilled, (state, action) => {
                 console.log(action.payload);
                 state.questions = [...state.questions, action.payload];
+                state.users.forEach(u => {
+                    if (u.id === action.payload.author) {
+                        u.questions.push(action.payload.id)
+                    }
+                })
             })
             .addCase(saveQuestionAnswer.fulfilled, (state, action) => {
                 console.log(action.payload);
@@ -63,6 +77,18 @@ const questSlice = createSlice({
                         }
                     }
                 });
+                state.users.forEach(u => {
+                    if (u.id === action.payload.authedUser) {
+                        u.answers[action.payload.qid] = 1 === action.payload.answer ? 'optionOne' : 'optionTwo'
+                    }
+                })
+            })
+            .addCase(fetchUsers.pending, (state) => {
+                state.fetchUserPending = true;
+            })
+            .addCase(fetchUsers.fulfilled, (state, action) => {
+                state.users = action.payload
+                state.fetchUserPending = false;
             })
     },
 })
