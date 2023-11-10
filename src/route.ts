@@ -32,7 +32,7 @@ const leaderboardRoute = new Route({
 })
 const questNewRoute = new Route({
     getParentRoute: () => layoutRoute,
-    path: '/quest/new',
+    path: '/add',
     component: QuestNew,
 })
 const questDetailRoute = new Route({

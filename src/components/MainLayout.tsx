@@ -16,7 +16,7 @@ const items: MenuProps['items'] = [
     },
     {
         label: 'New',
-        key: '/quest/new',
+        key: '/add',
     },
 ];
 
@@ -47,8 +47,8 @@ export default function MainLayout() {
             case '/leaderboard':
                 navigate({ to: '/leaderboard' })
                 break
-            case '/quest/new':
-                navigate({ to: '/quest/new' })
+            case '/add':
+                navigate({ to: '/add' })
                 break
         }
     };
