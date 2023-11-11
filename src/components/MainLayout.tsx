@@ -1,8 +1,8 @@
-import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { UserOutlined } from "@ant-design/icons";
 
 const items: MenuProps['items'] = [
     {
@@ -31,15 +31,10 @@ const avatarMenuItems: MenuProps['items'] = [
 export default function MainLayout() {
     const auth = useAuth()
     const navigate = useNavigate()
-    useEffect(() => {
-        if (!auth.isAuthenticated()) {
-            navigate('/login')
-            return
-        }
-        setCurrent(window.location.pathname)
-    }, [auth, navigate])
-
     const [current, setCurrent] = useState('home');
+    useEffect(() => {
+        setCurrent(window.location.pathname)
+    }, [])
     const onClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case '/':
@@ -53,6 +48,9 @@ export default function MainLayout() {
                 break
         }
     };
+    if (!auth.isAuthenticated()) {
+        return <Navigate to='/login' />
+    }
     return (
         <>
             <div style={{
