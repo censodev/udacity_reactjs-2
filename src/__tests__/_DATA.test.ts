@@ -37,7 +37,6 @@ describe('_saveQuestionAnswer', () => {
     const result = await _saveQuestionAnswer({ authedUser, qid, answer });
 
     expect(result).toBe(true);
-    expect(result).toMatchSnapshot();
   });
 
   test('rejects with an error for incorrect data', async () => {

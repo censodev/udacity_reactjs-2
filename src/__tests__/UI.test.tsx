@@ -1,8 +1,8 @@
-// import { render, fireEvent, screen } from '@testing-library/react';
-// import { Provider } from 'react-redux';
-// import store from '../store';
-// import { RouterProvider } from '@tanstack/react-router';
-// import router from '../route';
+import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import store from '../store';
+import { RouterProvider } from '@tanstack/react-router';
+import router from '../route';
 
 // describe('UI', () => {
 //     test('login flow', async () => {
@@ -26,3 +26,13 @@
 //         }, 500)
 //     });
 // });
+describe("snapshot", () => {
+    it("snapshot", () => {
+        const component = render(
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        );
+        expect(component).toMatchSnapshot();
+    });
+});
