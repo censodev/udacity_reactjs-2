@@ -13,12 +13,12 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@reduxjs/toolkit": "^1.9.7",
-    "@tanstack/react-router": "^0.0.1-beta.209",
     "antd": "^5.10.3",
     "date-fns": "^2.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.1.3"
+    "react-redux": "^8.1.3",
+    "react-router-dom": "^6.18.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",

@@ -2,8 +2,8 @@ import { Button, Form, Input } from "antd";
 import { useDispatch } from "react-redux";
 import { createQuestion } from "../slices/questSlice";
 import useAuth from "../hooks/useAuth";
-import { useNavigate } from "@tanstack/react-router";
 import { AppThunkDispatch } from "../store";
+import { useNavigate } from "react-router-dom";
 
 export default function QuestNew() {
     const dispatch = useDispatch<AppThunkDispatch>()
@@ -13,7 +13,7 @@ export default function QuestNew() {
         const author = auth.user()?.id ?? ''
         await dispatch(createQuestion({ optionOneText, optionTwoText, author }))
         alert('Created!')
-        navigate({ to: '/' })
+        navigate('/')
     }
     return (
         <Form

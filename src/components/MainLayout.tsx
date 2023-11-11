@@ -1,8 +1,8 @@
 import { UserOutlined } from "@ant-design/icons";
-import { Outlet, useNavigate } from "@tanstack/react-router";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const items: MenuProps['items'] = [
     {
@@ -33,7 +33,7 @@ export default function MainLayout() {
     const navigate = useNavigate()
     useEffect(() => {
         if (!auth.isAuthenticated()) {
-            navigate({ to: '/login' })
+            navigate('/login')
             return
         }
         setCurrent(window.location.pathname)
@@ -43,13 +43,13 @@ export default function MainLayout() {
     const onClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
             case '/':
-                navigate({ to: '/' })
+                navigate('/')
                 break
             case '/leaderboard':
-                navigate({ to: '/leaderboard' })
+                navigate('/leaderboard')
                 break
             case '/add':
-                navigate({ to: '/add' })
+                navigate('/add')
                 break
         }
     };
