@@ -2,7 +2,7 @@ import { Spin, Table } from "antd";
 import { fetchUsers } from "../slices/questSlice";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../store";
+import { AppThunkDispatch, RootState } from "../store";
 const columns = [
     {
         title: 'User',
@@ -21,7 +21,7 @@ const columns = [
     },
 ];
 export default function Leaderboard() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppThunkDispatch>()
     const fetchPending = useSelector((state: RootState) => state.quest.fetchUserPending);
     const data = useSelector((state: RootState) => state.quest.users)
         .map(i => {

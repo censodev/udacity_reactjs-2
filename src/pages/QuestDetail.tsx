@@ -1,12 +1,11 @@
 import { Card } from "antd"
-import Title from "antd/es/typography/Title"
 import { useDispatch, useSelector } from "react-redux"
-import { RootState } from "../store"
+import { AppThunkDispatch, RootState } from "../store"
 import { saveQuestionAnswer } from "../slices/questSlice"
 import useAuth from "../hooks/useAuth"
 
 export default function QuestDetail() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppThunkDispatch>()
     const auth = useAuth()
     const uid = auth.user()?.id ?? ''
     const pathSegments = window.location.pathname.split('/')
@@ -14,7 +13,7 @@ export default function QuestDetail() {
     const questions = useSelector((state: RootState) => state.quest.questions)
     const data = questions.find(q => q.id === id)
     async function onVote(opt: number) {
-        await dispatch(saveQuestionAnswer({ qid: id, authedUser: auth.user()?.id, answer: opt }))
+        await dispatch(saveQuestionAnswer({ qid: id, authedUser: uid, answer: opt }))
         alert('Voted!')
     }
 
@@ -24,7 +23,7 @@ export default function QuestDetail() {
             flexDirection: 'column',
             alignItems: 'center',
         }}>
-            <Title level={3}>Poll by {data?.author}</Title>
+            <h3>Poll by {data?.author}</h3>
             <p>Would you rather</p>
             <div style={{
                 display: 'flex',

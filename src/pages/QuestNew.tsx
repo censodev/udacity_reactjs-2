@@ -1,16 +1,16 @@
 import { Button, Form, Input } from "antd";
-import Title from "antd/es/typography/Title";
 import { useDispatch } from "react-redux";
 import { createQuestion } from "../slices/questSlice";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "@tanstack/react-router";
+import { AppThunkDispatch } from "../store";
 
 export default function QuestNew() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch<AppThunkDispatch>()
     const navigate = useNavigate()
     const auth = useAuth()
     async function onFinish({ optionOneText, optionTwoText }: { optionOneText: string, optionTwoText: string }) {
-        const author = auth.user()?.id
+        const author = auth.user()?.id ?? ''
         await dispatch(createQuestion({ optionOneText, optionTwoText, author }))
         alert('Created!')
         navigate({ to: '/' })
@@ -25,7 +25,7 @@ export default function QuestNew() {
                 maxWidth: '500px',
                 margin: '0 auto',
             }}>
-            <Title level={3}>Would you rather</Title>
+            <h3>Would you rather</h3>
             <p>Create your own poll</p>
             <div style={{
                 display: 'flex',

@@ -1,7 +1,6 @@
 import { UserOutlined } from "@ant-design/icons";
 import { Outlet, useNavigate } from "@tanstack/react-router";
 import { Avatar, Dropdown, Menu, MenuProps } from "antd";
-import Title from "antd/es/typography/Title";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
@@ -31,13 +30,15 @@ const avatarMenuItems: MenuProps['items'] = [
 
 export default function MainLayout() {
     const auth = useAuth()
+    const navigate = useNavigate()
     useEffect(() => {
         if (!auth.isAuthenticated()) {
-            window.location.href = '/login'
+            navigate({ to: '/login' })
+            return
         }
         setCurrent(window.location.pathname)
-    }, [auth])
-    const navigate = useNavigate()
+    }, [auth, navigate])
+
     const [current, setCurrent] = useState('home');
     const onClick: MenuProps['onClick'] = (e) => {
         switch (e.key) {
@@ -66,7 +67,7 @@ export default function MainLayout() {
                         alignItems: 'center',
                         borderBottom: '1px solid rgba(5, 5, 5, 0.06)',
                     }}>
-                        <Title level={5} style={{ margin: '0 0.5rem 0 0' }}>{auth.user()?.name}</Title>
+                        <label style={{ margin: '0 0.5rem 0 0' }}>{auth.user()?.name}</label>
                         <Avatar icon={<UserOutlined />}></Avatar>
                     </div>
                 </Dropdown>

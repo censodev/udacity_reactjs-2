@@ -46,7 +46,7 @@ export default function Login() {
                     />
                 </Form.Item>
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>
+                    <Button id='btnLogin' type="primary" htmlType="submit" className="login-form-button" style={{ width: '100%' }}>
                         Log in
                     </Button>
                 </Form.Item>
