@@ -122,3 +122,208 @@ exports[`5. Snapshot test tests NewQuestion page with snapshot 1`] = `
   "unmount": [Function],
 }
 `;
+
+exports[`snapshot snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <h2>
+        Unexpected Application Error!
+      </h2>
+      <h3
+        style="font-style: italic;"
+      >
+        window.matchMedia is not a function
+      </h3>
+      <pre
+        style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        TypeError: window.matchMedia is not a function
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:93:30
+    at Array.forEach (&lt;anonymous&gt;)
+    at Object.register (D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:83:36)
+    at Object.subscribe (D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:64:37)
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\grid\\hooks\\useBreakpoint.js:19:38
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\rc-util\\lib\\hooks\\useLayoutEffect.js:18:12
+    at commitHookEffectListMount (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:23150:26)
+    at commitPassiveMountOnFiber (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24931:11)
+    at commitPassiveMountEffects_complete (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24891:9)
+    at commitPassiveMountEffects_begin (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24878:7)
+    at commitPassiveMountEffects (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24866:3)
+    at flushPassiveEffectsImpl (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:27039:3)
+    at flushPassiveEffects (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26984:14)
+    at performSyncWorkOnRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26076:3)
+    at flushSyncCallbacks (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:12042:22)
+    at commitRootImpl (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26959:3)
+    at commitRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26682:5)
+    at finishConcurrentRender (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:25981:9)
+    at performConcurrentWorkOnRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:25809:7)
+    at flushActQueue (D:\\workspace\\udacity_reactjs-2\\node_modules\\react\\cjs\\react.development.js:2667:24)
+    at act (D:\\workspace\\udacity_reactjs-2\\node_modules\\react\\cjs\\react.development.js:2582:11)
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\act-compat.js:46:25
+    at renderRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\pure.js:161:26)
+    at render (D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\pure.js:247:10)
+    at Object.&lt;anonymous&gt; (D:\\workspace\\udacity_reactjs-2\\src\\__tests__\\UI.test.tsx:31:33)
+    at Promise.then.completed (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\utils.js:231:10)
+    at _callCircusTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:121:9)
+    at run (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)
+    at runTestInternal (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\runTest.js:367:16)
+    at runTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\runTest.js:444:34)
+    at Object.worker (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\testWorker.js:106:12)
+      </pre>
+      <p>
+        💿 Hey developer 👋
+      </p>
+      <p>
+        You can provide a way better UX than this when your app throws errors by providing your own 
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          ErrorBoundary
+        </code>
+         or
+         
+        <code
+          style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+        >
+          errorElement
+        </code>
+         prop on your route.
+      </p>
+    </div>
+  </body>,
+  "container": <div>
+    <h2>
+      Unexpected Application Error!
+    </h2>
+    <h3
+      style="font-style: italic;"
+    >
+      window.matchMedia is not a function
+    </h3>
+    <pre
+      style="padding: 0.5rem; background-color: rgba(200, 200, 200, 0.5);"
+    >
+      TypeError: window.matchMedia is not a function
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:93:30
+    at Array.forEach (&lt;anonymous&gt;)
+    at Object.register (D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:83:36)
+    at Object.subscribe (D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\_util\\responsiveObserver.js:64:37)
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\antd\\lib\\grid\\hooks\\useBreakpoint.js:19:38
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\rc-util\\lib\\hooks\\useLayoutEffect.js:18:12
+    at commitHookEffectListMount (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:23150:26)
+    at commitPassiveMountOnFiber (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24931:11)
+    at commitPassiveMountEffects_complete (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24891:9)
+    at commitPassiveMountEffects_begin (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24878:7)
+    at commitPassiveMountEffects (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:24866:3)
+    at flushPassiveEffectsImpl (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:27039:3)
+    at flushPassiveEffects (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26984:14)
+    at performSyncWorkOnRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26076:3)
+    at flushSyncCallbacks (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:12042:22)
+    at commitRootImpl (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26959:3)
+    at commitRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:26682:5)
+    at finishConcurrentRender (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:25981:9)
+    at performConcurrentWorkOnRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\react-dom\\cjs\\react-dom.development.js:25809:7)
+    at flushActQueue (D:\\workspace\\udacity_reactjs-2\\node_modules\\react\\cjs\\react.development.js:2667:24)
+    at act (D:\\workspace\\udacity_reactjs-2\\node_modules\\react\\cjs\\react.development.js:2582:11)
+    at D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\act-compat.js:46:25
+    at renderRoot (D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\pure.js:161:26)
+    at render (D:\\workspace\\udacity_reactjs-2\\node_modules\\@testing-library\\react\\dist\\pure.js:247:10)
+    at Object.&lt;anonymous&gt; (D:\\workspace\\udacity_reactjs-2\\src\\__tests__\\UI.test.tsx:31:33)
+    at Promise.then.completed (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\utils.js:298:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\utils.js:231:10)
+    at _callCircusTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:316:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:252:3)
+    at _runTestsForDescribeBlock (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:126:9)
+    at _runTestsForDescribeBlock (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:121:9)
+    at run (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\run.js:71:3)
+    at runAndTransformResultsToJestFormat (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapterInit.js:122:21)
+    at jestAdapter (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-circus\\build\\legacy-code-todo-rewrite\\jestAdapter.js:79:19)
+    at runTestInternal (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\runTest.js:367:16)
+    at runTest (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\runTest.js:444:34)
+    at Object.worker (D:\\workspace\\udacity_reactjs-2\\node_modules\\jest-runner\\build\\testWorker.js:106:12)
+    </pre>
+    <p>
+      💿 Hey developer 👋
+    </p>
+    <p>
+      You can provide a way better UX than this when your app throws errors by providing your own 
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        ErrorBoundary
+      </code>
+       or
+       
+      <code
+        style="padding: 2px 4px; background-color: rgba(200, 200, 200, 0.5);"
+      >
+        errorElement
+      </code>
+       prop on your route.
+    </p>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
