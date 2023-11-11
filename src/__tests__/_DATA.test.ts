@@ -1,11 +1,11 @@
-import { _saveQuestion } from "../../_DATA";
+import { _saveQuestion, _saveQuestionAnswer } from "../../_DATA";
 
 describe('_saveQuestion', () => {
   it('should return the saved question when correctly formatted data is passed', async () => {
     const questionData = {
       optionOneText: 'Option One Text',
       optionTwoText: 'Option Two Text',
-      author: 'Phuong Bui',
+      author: 'sarahedo',
     };
 
     const savedQuestion = await _saveQuestion(questionData);
@@ -24,9 +24,26 @@ describe('_saveQuestion', () => {
       optionTwoText: '',
       author: '',
     };
-    _saveQuestion(incorrectQuestionData).then(rs => console.log(rs)
-    ).catch(e => console.log(e)
-    )
-    await expect(_saveQuestion(incorrectQuestionData)).rejects.toThrow();
+    await expect(_saveQuestion(incorrectQuestionData)).rejects.toBeDefined();
+  });
+});
+
+describe('_saveQuestionAnswer', () => {
+  test('returns true for correct data', async () => {
+    const authedUser = 'sarahedo';
+    const qid = 'vthrdm985a262al8qx3do';
+    const answer = 'optionOne';
+
+    const result = await _saveQuestionAnswer({ authedUser, qid, answer });
+
+    expect(result).toBe(true);
+  });
+
+  test('rejects with an error for incorrect data', async () => {
+    const authedUser = '';
+    const qid = '';
+    const answer = 'optionOne';
+
+    await expect(_saveQuestionAnswer({ authedUser, qid, answer })).rejects.toBeDefined();
   });
 });
