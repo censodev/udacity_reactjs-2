@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router-dom';
 import router from '../router';
 
 describe("snapshot", () => {
-    it("snapshot", () => {
+    it("snapshot", async () => {
         const component = render(
             <Provider store={store}>
                 <RouterProvider router={router} />
