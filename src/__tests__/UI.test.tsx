@@ -13,7 +13,7 @@ describe("UI", () => {
         );
         expect(component).toMatchSnapshot();
     });
-    it("tests login button text change on signing in", async () => {
+    it("tests dom load", async () => {
         await act(() => render(
             <Provider store={store}>
                 <RouterProvider router={router} />
