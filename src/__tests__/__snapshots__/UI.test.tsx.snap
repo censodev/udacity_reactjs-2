@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot snapshot 1`] = `
+exports[`UI snapshot 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
@@ -140,7 +140,7 @@ exports[`snapshot snapshot 1`] = `
                   >
                     <button
                       class="ant-btn css-dev-only-do-not-override-qgg3xn ant-btn-primary login-form-button"
-                      id="btnLogin"
+                      data-testid="btnLogin"
                       style="width: 100%;"
                       type="submit"
                     >
@@ -293,7 +293,7 @@ exports[`snapshot snapshot 1`] = `
                 >
                   <button
                     class="ant-btn css-dev-only-do-not-override-qgg3xn ant-btn-primary login-form-button"
-                    id="btnLogin"
+                    data-testid="btnLogin"
                     style="width: 100%;"
                     type="submit"
                   >
