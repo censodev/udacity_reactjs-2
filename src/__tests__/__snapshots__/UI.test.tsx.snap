@@ -57,6 +57,7 @@ exports[`UI snapshot 1`] = `
                       <input
                         aria-required="true"
                         class="ant-input css-dev-only-do-not-override-qgg3xn"
+                        data-testid="username"
                         id="normal_login_username"
                         placeholder="Username"
                         type="text"
@@ -112,6 +113,7 @@ exports[`UI snapshot 1`] = `
                       <input
                         aria-required="true"
                         class="ant-input css-dev-only-do-not-override-qgg3xn"
+                        data-testid="password"
                         id="normal_login_password"
                         placeholder="Password"
                         type="password"
@@ -210,6 +212,7 @@ exports[`UI snapshot 1`] = `
                     <input
                       aria-required="true"
                       class="ant-input css-dev-only-do-not-override-qgg3xn"
+                      data-testid="username"
                       id="normal_login_username"
                       placeholder="Username"
                       type="text"
@@ -265,6 +268,7 @@ exports[`UI snapshot 1`] = `
                     <input
                       aria-required="true"
                       class="ant-input css-dev-only-do-not-override-qgg3xn"
+                      data-testid="password"
                       id="normal_login_password"
                       placeholder="Password"
                       type="password"

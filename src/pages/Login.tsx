@@ -33,13 +33,18 @@ export default function Login() {
                     name="username"
                     rules={[{ required: true, message: 'Please input your Username!' }]}
                 >
-                    <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+                    <Input
+                        data-testid="username"
+                        prefix={<UserOutlined className="site-form-item-icon" />}
+                        placeholder="Username" />
                 </Form.Item>
                 <Form.Item
+
                     name="password"
                     rules={[{ required: true, message: 'Please input your Password!' }]}
                 >
                     <Input
+                        data-testid="password"
                         prefix={<LockOutlined className="site-form-item-icon" />}
                         type="password"
                         placeholder="Password"

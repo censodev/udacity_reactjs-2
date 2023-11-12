@@ -1,4 +1,4 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { RouterProvider } from 'react-router-dom';
@@ -13,7 +13,7 @@ describe("UI", () => {
         );
         expect(component).toMatchSnapshot();
     });
-    it("tests dom load", async () => {
+    it("dom load", async () => {
         await act(() => render(
             <Provider store={store}>
                 <RouterProvider router={router} />
@@ -21,5 +21,17 @@ describe("UI", () => {
         ));
         const loginBtn = screen.getByTestId("btnLogin");
         expect(loginBtn).toBeInTheDocument()
+    });
+    it("login flow", async () => {
+        await act(() => render(
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        ));
+
+        fireEvent.change(screen.getByTestId('username'), { target: { value: 'sarahedo' } })
+        fireEvent.change(screen.getByTestId('password'), { target: { value: 'password123' } })
+        fireEvent.click(screen.getByTestId("btnLogin"))
+        expect(screen.getByTestId("home")).toBeInTheDocument()
     });
 });

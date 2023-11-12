@@ -17,7 +17,7 @@ export default function Home() {
     }, [dispatch]);
     return (
         <Spin spinning={fetchPending}>
-            <input id="home" hidden></input>
+            <input data-testid="home" hidden></input>
             <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="New Questions" questions={questions.filter(q => !q.optionOne.votes.includes(uid) && !q.optionTwo.votes.includes(uid))}></QuestGroup>
             <QuestGroup style={{ margin: '1rem auto', width: '80%' }} name="Done" questions={questions.filter(q => q.optionOne.votes.includes(uid) || q.optionTwo.votes.includes(uid))}></QuestGroup>
         </Spin>
