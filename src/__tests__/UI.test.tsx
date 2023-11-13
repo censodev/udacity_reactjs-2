@@ -1,4 +1,4 @@
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import store from '../store';
 import { RouterProvider } from 'react-router-dom';
@@ -22,16 +22,29 @@ describe("UI", () => {
         const loginBtn = screen.getByTestId("btnLogin");
         expect(loginBtn).toBeInTheDocument()
     });
-    it("login flow", async () => {
+    it("login flow - success", async () => {
         await act(() => render(
             <Provider store={store}>
                 <RouterProvider router={router} />
             </Provider>
         ));
 
-        fireEvent.change(screen.getByTestId('username'), { target: { value: 'sarahedo' } })
-        fireEvent.change(screen.getByTestId('password'), { target: { value: 'password123' } })
-        fireEvent.click(screen.getByTestId("btnLogin"))
+        await act(async () => {
+            fireEvent.change(screen.getByTestId('username'), { target: { value: 'sarahedo' } })
+            fireEvent.change(screen.getByTestId('password'), { target: { value: 'password123' } })
+        });
+
+        expect(screen.getByTestId('username')).toHaveValue('sarahedo')
+        expect(screen.getByTestId('password')).toHaveValue('password123')
+
+        await act(async () => {
+            fireEvent.click(screen.getByTestId("btnLogin"))
+        })
+
+        await waitFor(() => {
+            expect(screen.getByTestId("home")).toBeInTheDocument()
+        }, { timeout: 5000 });
+
         expect(screen.getByTestId("home")).toBeInTheDocument()
     });
 });
