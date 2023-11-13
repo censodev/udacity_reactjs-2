@@ -17,6 +17,7 @@ export default function QuestNew() {
     }
     return (
         <Form
+            data-testid="newForm"
             onFinish={onFinish}
             style={{
                 display: 'flex',

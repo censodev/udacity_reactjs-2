@@ -3,6 +3,10 @@ import { Provider } from 'react-redux';
 import store from '../store';
 import { RouterProvider } from 'react-router-dom';
 import router from '../router';
+// import QuestNew from '../pages/QuestNew';
+// import MainLayout from '../components/MainLayout';
+// import Login from '../pages/Login';
+// import Home from '../pages/Home';
 
 describe("UI", () => {
     it("snapshot", async () => {
@@ -13,7 +17,7 @@ describe("UI", () => {
         );
         expect(component).toMatchSnapshot();
     });
-    it("dom load", async () => {
+    it("login page load", async () => {
         await act(() => render(
             <Provider store={store}>
                 <RouterProvider router={router} />
@@ -42,9 +46,45 @@ describe("UI", () => {
         })
 
         await waitFor(() => {
-            expect(screen.getByTestId("home")).toBeInTheDocument()
-        }, { timeout: 5000 });
+            expect(screen.getByText("Show")).toBeInTheDocument()
+        }, { timeout: 20000 });
 
         expect(screen.getByTestId("home")).toBeInTheDocument()
+    });
+
+    it("quest detail page load", async () => {
+        await act(() => render(
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        ));
+        await act(async () => {
+            fireEvent.click(screen.getAllByText("Show").at(0) as HTMLElement)
+        })
+        expect(screen.getByTestId('questdetail')).toBeInTheDocument()
+    });
+
+    it("quest new page load", async () => {
+        await act(() => render(
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        ));
+        await act(async () => {
+            fireEvent.click(screen.getByText("New"))
+        })
+        expect(screen.getByTestId('newForm')).toBeInTheDocument()
+    });
+
+    it("leaderboard new page load", async () => {
+        await act(() => render(
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        ));
+        await act(async () => {
+            fireEvent.click(screen.getByText("Leaderboard"))
+        })
+        expect(screen.getByTestId('leaderboard')).toBeInTheDocument()
     });
 });

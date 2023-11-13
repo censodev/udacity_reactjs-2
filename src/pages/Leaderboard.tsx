@@ -38,7 +38,7 @@ export default function Leaderboard() {
     }, [dispatch]);
     return (
         <Spin spinning={fetchPending}>
-            <Table dataSource={data} columns={columns} style={{ marginTop: '1rem' }} pagination={{ hideOnSinglePage: true }} />
+            <Table data-testid="leaderboard" dataSource={data} columns={columns} style={{ marginTop: '1rem' }} pagination={{ hideOnSinglePage: true }} />
 
         </Spin>
     )

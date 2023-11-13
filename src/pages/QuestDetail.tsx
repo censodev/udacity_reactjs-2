@@ -18,11 +18,12 @@ export default function QuestDetail() {
     }
 
     return (
-        <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-        }}>
+        <div data-testid="questdetail"
+            style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+            }}>
             <h3>Poll by {data?.author}</h3>
             <p>Would you rather</p>
             <div style={{
