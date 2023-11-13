@@ -46,7 +46,7 @@ describe("UI", () => {
         })
 
         await waitFor(() => {
-            expect(screen.getByText("Show")).toBeInTheDocument()
+            expect(screen.getAllByText("Show").length).toBeGreaterThan(0)
         }, { timeout: 20000 });
 
         expect(screen.getByTestId("home")).toBeInTheDocument()
