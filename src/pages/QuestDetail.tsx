@@ -17,6 +17,10 @@ export default function QuestDetail() {
         alert('Voted!')
     }
 
+    if (!data) {
+        return <div>404</div>
+    }
+
     return (
         <div data-testid="questdetail"
             style={{
