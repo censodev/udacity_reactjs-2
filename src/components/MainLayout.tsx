@@ -49,7 +49,7 @@ export default function MainLayout() {
         }
     };
     if (!auth.isAuthenticated()) {
-        return <Navigate to='/login' />
+        return <Navigate to={`/login?redirect=${window.location.pathname}`} />
     }
     return (
         <>
